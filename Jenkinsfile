@@ -6,7 +6,7 @@ pipeline{
     stages{
        stage('build'){
             steps{
-                bat 'mvn clean package'
+                bat ' "C:\maven\apache-maven-3.9.16\bin\mvn.cmd" clean package'
             }
         }
         stage('docker'){
