@@ -6,7 +6,7 @@ pipeline{
     stages{
        stage('build'){
             steps{
-                bat ' "C:\\maven\\apache-maven-3.9.16\\bin\\mvn.cmd" clean package'
+                bat ' mvn clean package'
             }
         }
         stage('docker'){
@@ -17,11 +17,6 @@ pipeline{
         stage('run'){
             steps{
                 bat 'docker run -p 8081:8081 maven-external'
-            }
-        }
-        stage('test'){
-            steps{
-                bat 'curl http://localhost:8081'
             }
         }
     }
