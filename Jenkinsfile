@@ -1,16 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage('checkout'){
-            steps{
-                checkout scm
-            }
-        }
-        stage('build'){
-            steps{
-                bat 'mvn clean package'
-            }
-        }
+       
         stage('docker'){
             steps{
                 bat 'docker build -d maven-external'
