@@ -1,7 +1,11 @@
 pipeline{
     agent any
     stages{
-       
+       stage('build'){
+            steps{
+                bat 'mvn clean package'
+            }
+        }
         stage('docker'){
             steps{
                 bat 'docker build -t maven-external .'
