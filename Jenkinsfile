@@ -4,7 +4,7 @@ pipeline{
        
         stage('docker'){
             steps{
-                bat 'docker build -d maven-external'
+                bat 'docker build -t maven-external .'
             }
         }
         stage('run'){
