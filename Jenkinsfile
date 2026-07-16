@@ -1,29 +1,23 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('checkout'){
-            steps{
-                scm checkout
-            }
-        }
-        stage('build'){
-            steps{
+
+    stages {
+
+        stage('Build') {
+            steps {
                 bat 'mvn clean package'
             }
         }
-        stage('docker'){
-            steps{
-                bat 'docker build -d maven-external'
+
+        stage('Docker') {
+            steps {
+                bat 'docker build -t myapp .'
             }
         }
-        stage('run'){
-            steps{
-                bat 'docker run -p 8081:8081 maven-external'
-            }
-        }
-        stage('test'){
-            steps{
-                bat 'curl http://localhost:8081'
+
+        stage('Run') {
+            steps {
+                bat 'docker run -d -p 8080:8080 myapp'
             }
         }
     }
